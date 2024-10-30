@@ -1,54 +1,31 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.util.*" %>
-<html>
-<head>
-    <title>Welcome to CrossFit Club</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            padding: 20px;
-        }
-        h1 {
-            color: #c0392b;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            background: #fff;
-            margin: 5px 0;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Welcome to the CrossFit Club!</h1>
-    <h2>Here are some exercises you can try:</h2>
+// FactorialCalculator.java
+import java.util.Scanner;
 
-    <%
-        List<String> exercises = Arrays.asList("Push-ups", "Squats", "Burpees", "Lunges", "Plank", "Deadlifts", "Bench Press", "Overhead Press");
+public class FactorialCalculator {
 
-        out.println("<ul>");
-        for (String exercise : exercises) {
-            out.println("<li>" + exercise + "</li>");
+    // Method to calculate factorial of a given number
+    public static long calculateFactorial(int number) {
+        long factorial = 1;
+        for (int i = 1; i <= number; i++) {
+            factorial *= i;
         }
-        out.println("</ul>");
-    %>
+        return factorial;
+    }
 
-    <h2>Random Exercise of the Day:</h2>
-    <%
-        Random random = new Random();
-        String randomExercise = exercises.get(random.nextInt(exercises.size()));
-    %>
-    <p><strong>Today's Random Exercise: </strong><%= randomExercise %></p>
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter a non-negative integer to calculate its factorial: ");
+        int number = scanner.nextInt();
+        
+        // Check for valid input
+        if (number < 0) {
+            System.out.println("Please enter a non-negative integer.");
+        } else {
+            long result = calculateFactorial(number);
+            System.out.println("The factorial of " + number + " is: " + result);
+        }
 
-    <footer>
-        <p>&copy; 2024 CrossFit Club</p>
-    </footer>
-</body>
-</html>
+        scanner.close();
+    }
+}
